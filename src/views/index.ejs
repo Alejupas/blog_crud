@@ -4,6 +4,20 @@
     <%- include('./partials/nav.ejs') %> 
 
     <h1>This is Something</h1>
+
+    <h3>Blogs sample</h3>
+
+    <ul class="list-group">
+        <% blogData.forEach(blog => { %>
+            <li class="list-group-item">
+                <%- `<strong>${blog.title}</strong> author: ${blog.author}` %> 
+            </li>
+            
+        <% }) %>
+
+    </ul>
+
+
     <!-- ikeliam bendra footer faila  -->
     <%- include('./partials/footer.ejs') %> 
 
