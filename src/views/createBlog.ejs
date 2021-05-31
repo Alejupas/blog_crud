@@ -1,0 +1,30 @@
+    <!-- ikeliam bendra head faila  -->
+    <%- include('./partials/head.ejs') %> 
+    <!-- ikeliam bendra navigacijos faila  -->
+    <%- include('./partials/nav.ejs') %> 
+
+    <h1>This is contact page</h1>
+
+
+    <form  action="/api/blog" method="POST">
+        <div class="form-group">
+          <label for="title">Your title</label>
+          <input type="text" class="form-control" id="title" name="title" placeholder="Enter title">
+        </div>
+        <div class="form-group">
+            <label for="author">Author</label>
+            <input type="text" class="form-control" id="author" name="author" placeholder="Enter author">
+        </div>
+
+        <button type="submit" class="btn btn-primary">Add post</button>
+      </form>
+
+
+
+
+
+    
+    <!-- ikeliam bendra footer faila  -->
+    <%- include('./partials/footer.ejs') %> 
+
+   
