@@ -1,72 +1,29 @@
-const { response } = require('express');
 const express = require('express');
 const app = express();
-const path = require('path'); //kad galetume nurodyt absoliutu kelia
-const blogs = require('./data/blogDb');
+const path = require('path');
 
 const PORT = 3000;
 
-//register view engine
+const pageRoutes = require('./routes/pageRoutes');
+
+// register view engine
 app.set('view engine', 'ejs');
-// nustatom render view homedir
+// nustatom render view home dir
 app.set('views', 'src/views');
 
-//home page
-app.get('/', function (req, res) {
-  //   res.sendFile(path.join(__dirname, 'pages', 'index.html'));
+// const blogData = require('./data/sampleBlog')
+const blogDb = require('./data/blogDb');
 
-  //paimti index.ejs faila is views  direktorijos
-  res.render('index', {
-    title: 'Home',
-    page: 'home',
-  });
-});
-
-//aout page
-app.get('/about', function (req, res) {
-  //   res.sendFile(path.join(__dirname, 'pages', 'about.html'));
-  res.render('about', {
-    title: 'About us',
-    page: 'about',
-  });
-});
-
-//blog page
-app.get('/blog', function (req, res) {
-  //   res.sendFile(path.join(__dirname, 'pages', 'blog.html'));
-  res.render('blog', {
-    title: 'Our Blog',
-    page: 'blog',
-    blogDb,
-  });
-});
-
-//contact page
-app.get('/contact', function (req, res) {
-  res.render('contact', {
-    title: 'Contact Us',
-    page: 'contact',
-  });
-});
+// pages routes
+app.use('/', pageRoutes);
 
 const staticPath = path.join(__dirname, 'static');
-//statine direktorija, css, js, img ir kitos..statiniam failam
+// statine direktorija, css, js, img ir kt statiniam failam
 app.use(express.static(staticPath));
 
-//create blog page /blog/create
-app.get('/blog/create', (req, res) => {
-  res.render('createBlog', {
-    title: 'Create new post',
-    page: 'createDb',
-  });
-});
+// isitraukti api routes ir panaudoti cia kad veiktu
 
-//blog api/ api/ blog - gauti visus postus json apvidalu
-app.get('/api/blogApi', (req, res) => {
-  response.json(blogs);
-});
-
-// 404 case, kuri vartotojas ivede puslapi kurio nera
-app.use((req, res) => res.status(404).send('Oops, Page not found'));
+// 404 case - kai vartojas ivede psl kurio nera
+app.use((req, res) => res.status(404).send('OOPs Page not found'));
 
 app.listen(PORT);
