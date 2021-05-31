@@ -13,9 +13,10 @@
     </button>
     <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
       <div class="navbar-nav ml-auto">
-        <a class="nav-link active" href="/">Home</a>
-        <a class="nav-link" href="/about">About</a>
-        <a class="nav-link" href="/blog">Blog</a>
+        <a class="nav-link <%= page === 'home' ? 'active' : '' %>" href="/">Home</a>
+        <a class="nav-link <%= page === 'about' ? 'active' : '' %>" href="/about">About</a>
+        <a class="nav-link <%= page === 'blog' ? 'active' : '' %>" href="/blog">Blog</a>
+        <a class="nav-link <%= page === 'contact' ? 'active' : '' %>" href="/contact">Contact</a>
       </div>
     </div>
   </nav>

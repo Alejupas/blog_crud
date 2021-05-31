@@ -14,7 +14,10 @@ app.get('/', function (req, res) {
   //   res.sendFile(path.join(__dirname, 'pages', 'index.html'));
 
   //paimti index.ejs faila is views  direktorijos
-  res.render('index');
+  res.render('index', {
+    title: 'Home',
+    page: 'home',
+  });
 });
 
 //aout page
@@ -22,13 +25,25 @@ app.get('/about', function (req, res) {
   //   res.sendFile(path.join(__dirname, 'pages', 'about.html'));
   res.render('about', {
     title: 'About us',
+    page: 'about',
   });
 });
 
 //blog page
 app.get('/blog', function (req, res) {
   //   res.sendFile(path.join(__dirname, 'pages', 'blog.html'));
-  res.render('blog');
+  res.render('blog', {
+    title: 'Our Blog',
+    page: 'blog',
+  });
+});
+
+//contact page
+app.get('/contact', function (req, res) {
+  res.render('contact', {
+    title: 'Contact Us',
+    page: 'contact',
+  });
 });
 
 const staticPath = path.join(__dirname, 'static');
